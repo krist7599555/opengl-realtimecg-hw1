@@ -1,6 +1,8 @@
 # Realtime CG HW1
 
-original instruction: [google docs](https://drive.google.com/file/d/1Kn0bihgN3Tvx8Eh3OftrgDAe1VX1ZPCr/view)
+liglig
+- full reference: [phong illumination model](https://andyzeng.github.io/basicshading)
+- some code: [raw code but not same](https://github.com/emmiehe/basic-shading/blob/master/src/shading.cpp)
 
 ส่งภายใน 1 มีนาคม 2564 เวลา 13:00 น ที่ [nuttapong26@gmail.com](mailto:nuttapong26@gmail.com)
 ใช้ Subject __Realtime CG HW1__ ภายใน email ระบุชื่อ นามสกุล รหัสนิสิต 
