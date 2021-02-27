@@ -105,9 +105,9 @@ void setPixel(int x, int y, GLfloat r, GLfloat g, GLfloat b) {
   glVertex2f(x + 0.5, y + 0.5);
 }
 
+vec3 view = vec3(1, 0, 1); // GLOBAL VIEW
 vec3 computeShadedColor(vec3 pos) {
 	// TODO calculate shader
-	const vec3 view = vec3(0, 0, 1);
 	const vec3 view_normal = vec3(view).normalize();
 	const vec3 surface_normal = vec3(pos).normalize();
 
@@ -241,6 +241,14 @@ void parseArguments(int argc, char* argv[]) {
   }
 }
 
+void loop(int frame) {
+	float t = float(frame) / 10;
+	view.z = cos(t);
+	view.x = sin(t);
+	glutPostRedisplay();
+	return glutTimerFunc(1000.f / 60, loop, frame + 1);
+}
+
 //****************************************************
 // the usual stuff, nothing exciting here
 //****************************************************
@@ -275,6 +283,7 @@ int main(int argc, char* argv[]) {
   glutReshapeFunc(myReshape);  // function to run when the window gets resized
   glutIdleFunc(myFrameMove);
 
+	glutTimerFunc(0, loop, 0);
   glutMainLoop();  // infinite loop that will keep drawing and resizing and whatever else
 
   return 0;
