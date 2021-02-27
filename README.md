@@ -1,5 +1,7 @@
 # Realtime CG HW1
 
+![finished as a try](public/screenshot-1.png)
+
 liglig
 - full reference: [phong illumination model](https://andyzeng.github.io/basicshading)
 - some code: [raw code but not same](https://github.com/emmiehe/basic-shading/blob/master/src/shading.cpp)
