@@ -105,14 +105,8 @@ void setPixel(int x, int y, GLfloat r, GLfloat g, GLfloat b) {
   glVertex2f(x + 0.5, y + 0.5);
 }
 
-// Hack
-// TODO: Init
-
-void default_value_init() {
-	// cout << "ka: " << material.ka << '\n';
-}
 vec3 computeShadedColor(vec3 pos) {
-	// ? MAGIC CONSTANT
+	// TODO calculate shader
 	const vec3 view = vec3(0, 0, 1);
 	const vec3 view_normal = vec3(view).normalize();
 	const vec3 surface_normal = vec3(pos).normalize();
@@ -120,7 +114,8 @@ vec3 computeShadedColor(vec3 pos) {
 	vec3 I_total = vec3(0,0,0);
 	for (Light light : lights) {
 		const vec3 intensity = light.color;
-		const vec3 normalized_light = vec3(light.posDir).normalize(); // nl ?
+		const vec3 origin = light.type == Light::DIRECTIONAL_LIGHT ? vec3(0,0,0) : pos;
+		const vec3 normalized_light = vec3(light.posDir - origin).normalize(); // nl ?
 
 		// ambient component = I * k_a
 		auto I_ambient = prod(material.ka, intensity);
@@ -250,7 +245,6 @@ void parseArguments(int argc, char* argv[]) {
 // the usual stuff, nothing exciting here
 //****************************************************
 int main(int argc, char* argv[]) {
-	default_value_init();
   parseArguments(argc, argv);
 
   //This initializes glut
