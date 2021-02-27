@@ -24,7 +24,9 @@ original instruction: [google docs](https://drive.google.com/file/d/1Kn0bihgN3Tv
 
 - -ks r g b 
 
-  This is the specular color coefficients of the sphere material. The parameters r g b are numbers between 0 and 1 inclusive. • -sp v 
+  This is the specular color coefficients of the sphere material. The parameters r g b are numbers between 0 and 1 inclusive. 
+
+- -sp v 
 
   This is the power coefficient on the specular term. It is a number between 0 and max_float. 
 
