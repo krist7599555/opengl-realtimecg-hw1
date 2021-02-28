@@ -1,6 +1,6 @@
 # Realtime CG HW1
 
-> this repo project structure is not the same from thecher's sekeleton because MacOs not support CodeBlock. so I deside to make a Makefile myself.
+> this repo project structure is not the same from thecher's sekeleton because MacOs not support `CodeBlock`. but source code `main.cpp` is same. so I deside to make a `Makefile` myself.
 
 ## Screen shot
 
