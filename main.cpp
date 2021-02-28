@@ -107,34 +107,30 @@ void setPixel(int x, int y, GLfloat r, GLfloat g, GLfloat b) {
 
 vec3 view = vec3(1, 0, 1); // GLOBAL VIEW
 vec3 computeShadedColor(vec3 pos) {
-	// TODO calculate shader
-	const vec3 view_normal = vec3(view).normalize();
-	const vec3 surface_normal = vec3(pos).normalize();
+  // TODO calculate shader
+  const vec3 view_normal = vec3(view).normalize();
+  const vec3 surface_normal = vec3(pos).normalize();
 
-	vec3 I_total = vec3(0,0,0);
-	for (Light light : lights) {
-		const vec3 intensity = light.color;
-		const vec3 origin = light.type == Light::DIRECTIONAL_LIGHT ? vec3(0,0,0) : pos;
-		const vec3 normalized_light = vec3(light.posDir - origin).normalize(); // nl ?
+  vec3 I_total = vec3(0,0,0);
+  for (Light light : lights) {
+    const vec3 intensity = light.color;
+    const vec3 origin = light.type == Light::DIRECTIONAL_LIGHT ? vec3(0,0,0) : pos;
+    const vec3 normalized_light = vec3(light.posDir - origin).normalize(); // nl ?
 
-		// ambient component = I * k_a
-		auto I_ambient = prod(material.ka, intensity);
-		// cout << "ambient-: " << material.ka << " " << intensity << '\n';
-		// cout << "ambient : " << I_ambient << '\n';
-
-		// diffuse component = I * k_d * max(dot(normalized light, surface normal), 0)
+    // ambient component = I * k_a
+    auto I_ambient = prod(material.ka, intensity);
+    
+    // diffuse component = I * k_d * max(dot(normalized light, surface normal), 0)
     const float light2surface = max(normalized_light * surface_normal, 0.0f);
-		auto I_diffuse = prod(material.kd, intensity) * light2surface;
-		// cout << "diffuse : " << I_ambient << '\n';
-
-		// specular component = I * k_s * max(dot(r, view), 0)_p; r = -l + 2(dot(l, n))*n
-		auto reflect_normal = (-1 * normalized_light + 2 * (normalized_light * surface_normal)).normalize();
-		float reflect2view = max(reflect_normal * view_normal, 0.0f);
+    auto I_diffuse = prod(material.kd, intensity) * light2surface;
+    
+    // specular component = I * k_s * max(dot(r, view), 0)_p; r = -l + 2(dot(l, n))*n
+    auto reflect_normal = (-1 * normalized_light + 2 * (normalized_light * surface_normal)).normalize();
+    float reflect2view = max(reflect_normal * view_normal, 0.0f);
     auto I_specular = prod(material.ks, intensity) * pow(reflect2view, material.sp);
-		// cout << "specular: " << I_ambient << '\n';
-
-		I_total += I_ambient + I_diffuse + I_specular;
-	}
+    
+    I_total += I_ambient + I_diffuse + I_specular;
+  }
   return I_total;
 }
 
@@ -162,8 +158,6 @@ void myDisplay() {
       vec3 pos(x, y, z);  // Position on the surface of the sphere
 
       vec3 col = computeShadedColor(pos);
-			// cout << i << ',' << j << ") " << pos << " > " << col << '\n';
-      // Set the red pixel
       setPixel(drawX + j, drawY + i, col.r, col.g, col.b);
     }
   }
@@ -242,11 +236,11 @@ void parseArguments(int argc, char* argv[]) {
 }
 
 void loop(int frame) {
-	float t = float(frame) / 10;
-	view.z = cos(t);
-	view.x = sin(t);
-	glutPostRedisplay();
-	return glutTimerFunc(1000.f / 60, loop, frame + 1);
+  float t = float(frame) / 10;
+  view.z = cos(t);
+  view.x = sin(t);
+  glutPostRedisplay();
+  return glutTimerFunc(1000.f / 60, loop, frame + 1);
 }
 
 //****************************************************
@@ -283,7 +277,7 @@ int main(int argc, char* argv[]) {
   glutReshapeFunc(myReshape);  // function to run when the window gets resized
   glutIdleFunc(myFrameMove);
 
-	glutTimerFunc(0, loop, 0);
+  glutTimerFunc(0, loop, 0);
   glutMainLoop();  // infinite loop that will keep drawing and resizing and whatever else
 
   return 0;
