@@ -11,6 +11,7 @@
 - full reference: [phong illumination model](https://andyzeng.github.io/basicshading)
 - some code: [raw code but not same](https://github.com/emmiehe/basic-shading/blob/master/src/shading.cpp)
 - another shader [Specular Reflections](https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF)
+- toon shading [Toon Shading Code](https://prideout.net/blog/old/blog/index.html@tag=toon-shader.html)
 
 ## HomeWork Instruction
 
