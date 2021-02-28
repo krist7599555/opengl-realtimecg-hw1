@@ -105,7 +105,7 @@ void setPixel(int x, int y, GLfloat r, GLfloat g, GLfloat b) {
   glVertex2f(x + 0.5, y + 0.5);
 }
 
-vec3 view = vec3(1, 0, 1); // GLOBAL VIEW
+vec3 view = vec3(0, 0, -1); // GLOBAL VIEW
 vec3 computeShadedColor(vec3 pos) {
   // TODO calculate shader
   const vec3 view_normal = vec3(view).normalize();
