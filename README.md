@@ -1,5 +1,7 @@
 # Realtime CG HW1
 
+> this repo project structure is not the same from thecher's sekeleton because MacOs not support CodeBlock. so I deside to make a Makefile myself.
+
 ## Screen shot
 
 ![main code](public/formular.jpg)

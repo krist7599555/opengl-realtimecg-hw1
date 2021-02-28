@@ -17,3 +17,6 @@ clean:
 
 run:
 	./$(TARGET) $(ARGS)
+
+dev:
+	bash ./dev.sh
